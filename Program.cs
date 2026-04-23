@@ -14,7 +14,7 @@ namespace Arrays
             //Passport.UnitTests();
             //Traveler.UnitTests();
             //Line.UnitTests();
-            Parabula.UnitTests();
+            Parabula.UnitTests(); niga
         }
         }
       }
