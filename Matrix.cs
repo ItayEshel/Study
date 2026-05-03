@@ -15,10 +15,7 @@ namespace Study
 
         }   
 
-        public static RandomGrades(int[,] grades)
-        {
-            
-        }
+       
         public static double avrg(int[,] grades)
         {
             int sum = 0;
@@ -74,4 +71,4 @@ namespace Study
 
         }
     }
-}
+
