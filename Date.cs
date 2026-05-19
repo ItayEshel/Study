@@ -29,7 +29,6 @@ namespace Study
             Console.WriteLine(date2);
             Console.WriteLine(date2.CompareTo(date));
 
-
         }
         private int day;
         private int month;
