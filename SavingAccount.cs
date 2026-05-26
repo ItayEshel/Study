@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace Study
 {
-    public class CheckingAccount
+    public class SavingAccount
     {
-
-        const double DEFAULT_OVERDRAFT = 500;
         private int bankNum;
         private int branchNum;
         private int accountNum;
         private string id;
         private double balance;
-        private double overDraft;
+        private Date finishDate;
 
-        public CheckingAccount(int bankNum, int branchNum, int accountNum, string id, double overDraft)
+        public SavingAccount(int bankNum, int branchNum, int accountNum, string id, Date finishDate)
         {
             this.bankNum = bankNum;
             this.branchNum = branchNum;
             this.accountNum = accountNum;
             this.id = id;
             this.balance = 0;
-            this.overDraft = DEFAULT_OVERDRAFT;
+            this.finishDate = finishDate;
         }
-
-        public CheckingAccount(int bankNum, int branchNum, int accountNum, string id) : this(bankNum, branchNum, accountNum, id, CheckingAccount.DEFAULT_OVERDRAFT) { }
 
         public int GetBankNum() { return this.bankNum; }
 
@@ -38,14 +34,23 @@ namespace Study
         public string GetId() { return this.id; }
 
         public double GetBalance() { return this.balance; }
+        public Date GetFinishDate() { return this.finishDate; }
 
-        public double GetOverDraft() { return this.overDraft; }
-
-        public void SetOverDraft(int SetOverDraft)
+        public void SetFinishDate(Date Setfinishdate)
         {
-            if(this.overDraft > 0)
-            this.overDraft = SetOverDraft;
+            this.finishDate = Setfinishdate;
         }
+
+        public override string ToString()
+        {
+            return "Bank: " + this.bankNum +
+                   ", Branch: " + this.branchNum +
+                   ", Account: " + this.accountNum +
+                   ", ID: " + this.id +
+                   ", Balance: " + this.balance +
+                   ", FinishDate " + this.finishDate;
+        }
+
         public bool Deposit(int deposit)
         {
             if (deposit > 0)
@@ -57,41 +62,33 @@ namespace Study
             return false;
         }
 
-        public bool Withdrawal(int draw)
+        public bool Withdrawal(Date d)
         {
-            if (draw > 0 && this.balance - draw > -overDraft)
+
+            if (d.CompareTo(this.finishDate) <= 0)
             {
-               this.balance -= draw;
+                this.balance = 0;
                 return true;
             }
             return false;
         }
 
-        public override string ToString()
-        {
-            return "Bank: " + bankNum +
-                   ", Branch: " + branchNum +
-                   ", Account: " + accountNum +
-                   ", ID: " + id +
-                   ", Balance: " + balance +
-                   ", OverDraft " + overDraft;
-        }
-
         public static void UnitTests()
         {
             Console.WriteLine("-------------------------");
-            CheckingAccount ca = new CheckingAccount(314, 5125, 55555, "02313");
-            Console.WriteLine(ca);
+            Date finishdate = new Date(17, 17, 1717);
+            SavingAccount sa = new SavingAccount(314, 5125, 55555, "02313", finishdate);
+            Console.WriteLine(sa);
             Console.WriteLine("-------------------------");
-            ca.SetOverDraft(5000);
-            ca.Deposit(1000);
-            Console.WriteLine(ca);
+            sa.SetFinishDate(new Date(20, 2, 2020));
+            sa.Deposit(1000);
+            Console.WriteLine(sa);
             Console.WriteLine("-------------------------");
-            Console.WriteLine(ca.Withdrawal(500));
-            Console.WriteLine(ca);
+            Console.WriteLine(sa.Withdrawal(new Date(1, 1, 1000)));
+            Console.WriteLine(sa);
             Console.WriteLine("-------------------------");
-            Console.WriteLine(ca.Withdrawal(6000));
-            Console.WriteLine(ca);
+            Console.WriteLine(sa.Withdrawal(new Date(20, 2, 2027)));
+            Console.WriteLine(sa);
             Console.WriteLine("-------------------------");
 
         }
