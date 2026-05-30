@@ -15,7 +15,10 @@ namespace Arrays
             //Traveler.UnitTests();
             //Line.UnitTests();
             //Parabula.UnitTests(); 
-            Matrix.UnitTests();
+            //Matrix.UnitTests();
+
+            
+
 
 
             
