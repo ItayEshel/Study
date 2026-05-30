@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -302,9 +303,22 @@ namespace Study
             return -1;
         }
 
-        public static void PrintAndCount(int[,] arr, int x, int y)
+        public static bool IsDouble(string str)
         {
+            if (str.Length % 2 != 0)
+            {
+                return false;
+            }
 
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] != str[str.Length / 2])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
