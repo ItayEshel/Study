@@ -14,6 +14,14 @@ namespace Study
         private string id;
         private double balance;
 
+        public BasicAccount(int bankNum, int branchNum, int accountNum, string id)
+        {
+            this.bankNum = bankNum;
+            this.branchNum = branchNum;
+            this.accountNum = accountNum;
+            this.id = id;
+            this.balance = 0;
+        }
         public int GetBankNum() { return this.bankNum; }
 
         public int GetBranchNum() { return this.branchNum; }
@@ -35,6 +43,14 @@ namespace Study
             return false;
         }
 
+        public override string ToString()
+        {
+            return "Bank: " + this.bankNum +
+                   ", Branch: " + this.branchNum +
+                   ", Account: " + this.accountNum +
+                   ", ID: " + this.id +
+                   ", Balance: " + this.balance;
+        }
 
     }
 }
