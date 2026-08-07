@@ -126,5 +126,12 @@ namespace Study
 
             return maxId;
         }
+
+        public static void UnitTests()
+        {
+
+           
+        }
     }
+    
 }
