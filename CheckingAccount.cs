@@ -6,38 +6,18 @@ using System.Threading.Tasks;
 
 namespace Study
 {
-    public class CheckingAccount
+    public class CheckingAccount : BasicAccount
     {
-
         const double DEFAULT_OVERDRAFT = 500;
-        private int bankNum;
-        private int branchNum;
-        private int accountNum;
-        private string id;
-        private double balance;
         private double overDraft;
 
         public CheckingAccount(int bankNum, int branchNum, int accountNum, string id, double overDraft)
+            : base(bankNum, branchNum, accountNum, id)
         {
-            this.bankNum = bankNum;
-            this.branchNum = branchNum;
-            this.accountNum = accountNum;
-            this.id = id;
-            this.balance = 0;
-            this.overDraft = DEFAULT_OVERDRAFT;
+            this.overDraft = overDraft;
         }
 
         public CheckingAccount(int bankNum, int branchNum, int accountNum, string id) : this(bankNum, branchNum, accountNum, id, CheckingAccount.DEFAULT_OVERDRAFT) { }
-
-        public int GetBankNum() { return this.bankNum; }
-
-        public int GetBranchNum() { return this.branchNum; }
-
-        public int GetAccountNum() { return this.accountNum; }
-
-        public string GetId() { return this.id; }
-
-        public double GetBalance() { return this.balance; }
 
         public double GetOverDraft() { return this.overDraft; }
 
@@ -46,22 +26,12 @@ namespace Study
             if(this.overDraft > 0)
             this.overDraft = SetOverDraft;
         }
-        public bool Deposit(int deposit)
-        {
-            if (deposit > 0)
-            {
-                this.balance += deposit;
-                return true;
-            }
-
-            return false;
-        }
 
         public bool Withdrawal(int draw)
         {
-            if (draw > 0 && this.balance - draw > -overDraft)
+            if (draw > 0 && GetBalance() - draw > -overDraft)
             {
-               this.balance -= draw;
+                SetBalance(GetBalance() - draw);
                 return true;
             }
             return false;
@@ -69,12 +39,7 @@ namespace Study
 
         public override string ToString()
         {
-            return "Bank: " + bankNum +
-                   ", Branch: " + branchNum +
-                   ", Account: " + accountNum +
-                   ", ID: " + id +
-                   ", Balance: " + balance +
-                   ", OverDraft " + overDraft;
+            return base.ToString() + "OverDraft " + this.overDraft;
         }
 
         public static void UnitTests()
@@ -84,7 +49,6 @@ namespace Study
             Console.WriteLine(ca);
             Console.WriteLine("-------------------------");
             ca.SetOverDraft(5000);
-            ca.Deposit(1000);
             Console.WriteLine(ca);
             Console.WriteLine("-------------------------");
             Console.WriteLine(ca.Withdrawal(500));

@@ -16,7 +16,9 @@ namespace Arrays
             //Line.UnitTests();
             //Parabula.UnitTests(); 
             //Matrix.UnitTests();
-
+            //CheckingAccount.UnitTests();
+            //SavingAccount.UnitTests();
+            //BusinessAccount.UnitTests();
             
 
 

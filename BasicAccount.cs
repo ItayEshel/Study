@@ -32,6 +32,10 @@ namespace Study
 
         public double GetBalance() { return this.balance; }
 
+        public void SetBalance(double balance)
+        {
+            this.balance = balance;
+        }
         public bool deposit(int deposit)
         {
             if (deposit > 0)

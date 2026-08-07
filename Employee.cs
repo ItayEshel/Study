@@ -47,7 +47,7 @@ namespace Study
             this.salary = setSalary;
         }
 
-        public double bonus()
+        public virtual double Bonus()
         {
             return this.salary * 1.7;
         }
