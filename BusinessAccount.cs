@@ -44,7 +44,7 @@ namespace Study
         }
         public bool SalaryToAcc(int amount)
         {
-            if (amount > 0 && GetBalance() - amount >= -overDraft)
+            if (amount > 0 && GetBalance() - amount >= -this.overDraft)
             {
                 SetBalance(GetBalance() - amount);
                 return true;
@@ -52,6 +52,13 @@ namespace Study
 
             return false;
         }
+
+        public override bool AtRisk()
+        {
+            return GetBalance() <= -(this.overDraft * 0.9);
+        }
+
+
         public override string ToString()
         {
             return base.ToString() +
@@ -69,6 +76,9 @@ namespace Study
             Console.WriteLine(ba);
             Console.WriteLine(ba.SalaryToAcc(10000));   
             Console.WriteLine(ba);
+            BusinessAccount acc4 = new BusinessAccount(1, 2, 12345, "666666666", "Itay123", 5000);
+            acc4.SetBalance(-900);
+            Console.WriteLine(acc4.AtRisk());
         }
     }
 }

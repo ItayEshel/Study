@@ -47,6 +47,11 @@ namespace Study
             return false;
         }
 
+        public virtual bool AtRisk()
+        {
+            return false;
+        }
+
         public override string ToString()
         {
             return "Bank: " + this.bankNum +
@@ -54,6 +59,25 @@ namespace Study
                    ", Account: " + this.accountNum +
                    ", ID: " + this.id +
                    ", Balance: " + this.balance;
+        }
+
+        public static void UnitTests()
+        {
+            BasicAccount acc1 = new BasicAccount(1, 2, 3, "123");
+            Console.WriteLine(acc1.GetBankNum());
+            Console.WriteLine(acc1.GetBranchNum());
+            Console.WriteLine(acc1.GetAccountNum());
+            Console.WriteLine(acc1.GetId());
+            Console.WriteLine(acc1.GetBalance());
+            acc1.SetBalance(500);
+            Console.WriteLine(acc1.GetBalance());
+            Console.WriteLine(acc1.deposit(100));
+            Console.WriteLine(acc1.GetBalance());
+            Console.WriteLine(acc1.deposit(-50));
+            Console.WriteLine(acc1.GetBalance());
+            Console.WriteLine(acc1.AtRisk());
+            Console.WriteLine(acc1.ToString());
+            Console.WriteLine(acc1.AtRisk());
         }
 
     }

@@ -127,6 +127,31 @@ namespace Study
             return maxId;
         }
 
+        public BasicAccount[] RiskAccounts()
+        {
+            int count = 0;
+            for (int i = 0; i < accNum.Length; i++)
+            {
+                if (accNum[i] != null && accNum[i].AtRisk())
+                {
+                    count++;
+                }
+            }
+            BasicAccount[] risk = new BasicAccount[count];
+            int j = 0;
+
+            for (int i = 0; i < accNum.Length; i++)
+            {
+                if (accNum[i] != null && accNum[i].AtRisk())
+                {
+                    risk[j] = accNum[i];
+                    j++;
+                }
+            }
+
+            return risk;
+        }
+
         public static void UnitTests()
         {
             BasicAccount[] arr = new BasicAccount[2];
@@ -164,6 +189,13 @@ namespace Study
             BankServices bank6 = new BankServices(1, 1, 1, "123", arr6);
             BasicAccount[] result = bank6.AccById("123");
             Console.WriteLine(result[0]);
+
+            Console.WriteLine("-----------------------------");
+            BasicAccount acc1 = new BasicAccount(1, 1, 1, "111");
+            BasicAccount[] arr7 = { acc1 };
+            BankServices bank7 = new BankServices(1, 1, 1, "123", arr);
+            BasicAccount[] result2 = bank.RiskAccounts();
+            Console.WriteLine(result.Length);
         }
     }
     

@@ -42,6 +42,11 @@ namespace Study
             return base.ToString() + "OverDraft " + this.overDraft;
         }
 
+        public override bool AtRisk()
+        {
+            return GetBalance() < 0;
+        }
+
         public static void UnitTests()
         {
             Console.WriteLine("-------------------------");
@@ -57,6 +62,9 @@ namespace Study
             Console.WriteLine(ca.Withdrawal(6000));
             Console.WriteLine(ca);
             Console.WriteLine("-------------------------");
+            CheckingAccount ca2 = new CheckingAccount(1, 1, 2, "123");
+            ca2.SetBalance(-100);
+            Console.WriteLine(ca2.AtRisk());
 
         }
     }

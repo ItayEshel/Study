@@ -33,6 +33,12 @@ namespace Study
             }
             return false;
         }
+
+        public override bool AtRisk()
+        {
+            return GetBalance() == 0;
+        }
+
         public override string ToString()
         {
             return base.ToString() + " FinishDate " + this.finishDate;
@@ -54,6 +60,10 @@ namespace Study
             Console.WriteLine(sa.Withdrawal(new Date(20, 2, 2027)));
             Console.WriteLine(sa);
             Console.WriteLine("-------------------------");
+            DateTime finishDate = new DateTime(2026, 12, 31);
+            SavingAccount sa2 = new SavingAccount(1, 1, 3, "123",finishdate);
+            sa2.SetBalance(0);
+            Console.WriteLine(sa2.AtRisk());
 
         }
     }
