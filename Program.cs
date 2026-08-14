@@ -19,6 +19,7 @@ namespace Arrays
             //CheckingAccount.UnitTests();
             //SavingAccount.UnitTests();
             //BusinessAccount.UnitTests();
+            BankServices.UnitTests();
             
 
 
