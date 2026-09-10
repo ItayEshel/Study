@@ -8,6 +8,66 @@ namespace Study
 {
     public class Recursions
     {
+        public static void UnitTests()
+        {
+            //int n = PositiveSum(5);
+            //Console.WriteLine(n);
+
+            //int n = Factorial(5);
+            //Console.WriteLine(n);
+
+            //int n = OddMult(7);
+            //Console.WriteLine(n);
+
+            //int n = NumLength(12345);
+            //Console.WriteLine(n);
+
+            //int n = Divide(17, 5);
+            //Console.WriteLine(n);
+
+            //int n = Divide2(17, 5);
+            //Console.WriteLine(n);
+
+            //bool n = IsMultiple(10, 5);
+            //Console.WriteLine(n);
+            //bool n2 = IsMultiple(10, 6);
+            //Console.WriteLine(n2);
+
+            //bool n = IsPrimeNumber(7);
+            //bool n1 = IsPrimeNumber(10);
+            //bool n2 = IsPrimeNumber(2);
+            //bool n3 = IsPrimeNumber(1);
+            //Console.WriteLine(n);
+            //Console.WriteLine(n1);
+            //Console.WriteLine(n2);
+            //Console.WriteLine(n3);
+
+            //bool n = IsEvenOrOdd(1111);
+            //bool n2 = IsEvenOrOdd(1234);
+            //bool n3 = IsEvenOrOdd(2222);
+            //Console.WriteLine(n);
+            //Console.WriteLine(n2);
+            //Console.WriteLine(n3);
+
+            //int n = sum(5);
+            //Console.WriteLine(n);
+
+            //double n = PrimeSum(10);
+            //Console.WriteLine(n);
+            //double n2 = PrimeSum(6);
+            //Console.WriteLine(n2);
+
+            //int n = SumMult(3, 10);
+            //int n2 = SumMult(5, 21);
+            //Console.WriteLine(n);
+            //Console.WriteLine(n2);
+
+            int n = TwoPowSum(5);
+            Console.WriteLine(n);
+            int n2 = TwoPowSum(6);
+            Console.WriteLine(n2);
+        }
+
         public static int PositiveSum(int n)
         {
             if (n == 1)
@@ -179,64 +239,37 @@ namespace Study
             return TwoPowSum(n-1) * TwoPowSum(n-1) + TwoPowSum(n - 2) * TwoPowSum(n - 2);
         }
 
-        public static void UnitTests()
+        
+        //////////////////////////////////////////// ARRAYS RECURSION ///////////////////////////////////////////////
+
+
+        public static int SumArr(int[] arr, int i)
         {
-            //int n = PositiveSum(5);
-            //Console.WriteLine(n);
+            if (i == 0)
+                return arr[i];
 
-            //int n = Factorial(5);
-            //Console.WriteLine(n);
-
-            //int n = OddMult(7);
-            //Console.WriteLine(n);
-
-            //int n = NumLength(12345);
-            //Console.WriteLine(n);
-
-            //int n = Divide(17, 5);
-            //Console.WriteLine(n);
-
-            //int n = Divide2(17, 5);
-            //Console.WriteLine(n);
-
-            //bool n = IsMultiple(10, 5);
-            //Console.WriteLine(n);
-            //bool n2 = IsMultiple(10, 6);
-            //Console.WriteLine(n2);
-
-            //bool n = IsPrimeNumber(7);
-            //bool n1 = IsPrimeNumber(10);
-            //bool n2 = IsPrimeNumber(2);
-            //bool n3 = IsPrimeNumber(1);
-            //Console.WriteLine(n);
-            //Console.WriteLine(n1);
-            //Console.WriteLine(n2);
-            //Console.WriteLine(n3);
-
-            //bool n = IsEvenOrOdd(1111);
-            //bool n2 = IsEvenOrOdd(1234);
-            //bool n3 = IsEvenOrOdd(2222);
-            //Console.WriteLine(n);
-            //Console.WriteLine(n2);
-            //Console.WriteLine(n3);
-
-            //int n = sum(5);
-            //Console.WriteLine(n);
-
-            //double n = PrimeSum(10);
-            //Console.WriteLine(n);
-            //double n2 = PrimeSum(6);
-            //Console.WriteLine(n2);
-
-            //int n = SumMult(3, 10);
-            //int n2 = SumMult(5, 21);
-            //Console.WriteLine(n);
-            //Console.WriteLine(n2);
-
-            int n = TwoPowSum(5);
-            Console.WriteLine(n);
-            int n2 = TwoPowSum(6);
-            Console.WriteLine(n2);
+            return arr[i] + SumArr(arr, i - 1);
         }
+
+        public static int PosInArr(int[] arr, int i)
+        {
+            if (arr[i] > 0)
+            {
+                return 1 + PosInArr(arr, i - 1);
+            }
+
+            return PosInArr(arr, i - 1);
+            
+        }
+
+        public static void UnitTests2()
+        {
+            //int[] arr = { 2, 2, 2 };
+            //Console.WriteLine(SumArr(arr , 2));
+
+            int[] arr = { 2, -4, 5,-3 };
+            Console.WriteLine(SumArr(arr , 3));
+        }
+
     }
 }
