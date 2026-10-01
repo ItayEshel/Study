@@ -461,5 +461,33 @@ namespace Study
             Console.WriteLine(ReverseString(s));
         }
 
+
+        /////////////////////////////////// Recursions Void ///////////////////////////////////////////
+        
+        public static void BetweenTwoLetters(char tav1, char tav2)
+        {
+            if (tav1 == tav2)
+            {
+                Console.WriteLine("same letter");
+            }
+
+            else if (tav1 < tav2)
+            {
+                Console.WriteLine(tav1 + 1);
+                BetweenTwoLetters((char)(tav1 + 1), tav2);
+            }
+
+            else
+            {
+                Console.WriteLine(tav2 + 1);
+                BetweenTwoLetters(tav1, (char)(tav2 + 1));
+            }
+        }
+
+        public static void UnitTests3()
+        {
+            BetweenTwoLetters('a', 'd');
+
+        }
     }
 }
