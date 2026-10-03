@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -468,25 +469,235 @@ namespace Study
         {
             if (tav1 == tav2)
             {
-                Console.WriteLine("same letter");
+                Console.WriteLine(" ");
             }
 
             else if (tav1 < tav2)
             {
-                Console.WriteLine(tav1 + 1);
-                BetweenTwoLetters((char)(tav1 + 1), tav2);
+                if (tav1 + 1 != tav2)
+                {
+                    Console.WriteLine((char)(tav1 + 1));
+                    BetweenTwoLetters((char)(tav1 + 1), tav2);
+                }
             }
 
             else
             {
-                Console.WriteLine(tav2 + 1);
-                BetweenTwoLetters(tav1, (char)(tav2 + 1));
+                if (tav2 + 1 != tav1)
+                {
+                    Console.WriteLine((char)(tav2 + 1));
+                    BetweenTwoLetters(tav1, (char)(tav2 + 1));
+                }
             }
         }
 
+        public static void NumDividers(int n, int i = 1)
+        {
+            if (n < i)
+            {
+                Console.WriteLine("end");
+            }
+
+            else if (n == i)
+            {
+                Console.WriteLine(i);
+            }
+
+           else if (i < n)
+            {
+                if (n % i == 0)
+                {
+                    Console.WriteLine(i);
+                }
+
+                NumDividers(n, i + 1);
+            }
+        }
+
+        public static void PrintAllEven(int n)
+        {
+            if (n < 10)
+            {
+                if (n % 2 == 0)
+                {
+                    Console.WriteLine(n);
+                }
+            }
+
+            else if (n >= 10)
+            {
+                if (n % 2 == 0)
+                {
+                    Console.WriteLine(n%10);
+                }
+                PrintAllEven(n / 10);
+            }
+        }
+
+        public static void MultiplicationTable(int i = 1, int j = 1)
+        {
+            if (i*j <= 100)
+            {
+                if (j < 11)
+                {
+                    Console.Write($"{i*j}, ");
+                    MultiplicationTable(i, j + 1);
+                }
+                else
+                {
+                    Console.WriteLine();
+                    MultiplicationTable(i + 1, 1);
+                }
+            }
+            else
+                Console.WriteLine();
+        }
+
+        public static void SidraCheshbonit(int a1, int d, int n)
+        {
+            if (n > 0)
+            {
+                Console.WriteLine(a1);
+                SidraCheshbonit(a1 + d, d, n - 1);
+            }
+        }
+
+        public static void SidraChesbonit2(int n,int first = 1,int i = 1)
+        {
+            if (n > 0)
+            {
+                Console.WriteLine(first);
+                SidraChesbonit2(n - 1, first + i, i + 1);
+            }
+        }
+
+        public static void SidraChesbonit3(int n, int current = 4, int last = 0)
+        {
+            if (n > 0)
+            {
+                 if (last < current)
+                {
+                    Console.WriteLine(current);
+                    last = current;
+                    SidraChesbonit3(n - 1, current - 1, last);
+                }
+
+                else
+                {
+                    Console.WriteLine(current);
+                    last = current;
+                    SidraChesbonit3(n - 1, current + 2, last);
+                }
+                
+            }
+        }
+
+        public static void EvenInArr(int[] arr, int i = 0)
+        { 
+            if (i < arr.Length)
+            {
+                Console.WriteLine(arr[i]);
+                EvenInArr(arr, i + 2);
+            }
+        
+        }
+
+        public static void SmallerThanFollowing(int[] arr, int i=0)
+        {
+            if (i + 1 < arr.Length)
+            {
+                if (arr[i] < arr[i + 1])
+                {
+                    Console.WriteLine(arr[i]);
+                }
+
+                SmallerThanFollowing(arr, i + 1);
+            }
+        }
+
+        public static void MatrixTable(int[,] arr, int i, int j)
+        {
+            if (i < arr.GetLength(0))
+            {
+                if (j < arr.GetLength(1))
+                {
+                    Console.Write($"|{arr[i,j]}| , ");
+                   MatrixTable(arr, i, j + 1);
+                }
+                else
+                {
+                    Console.WriteLine();
+                    MatrixTable(arr, i + 1, 0);
+                }
+            }
+            else
+                Console.WriteLine();
+        }
+
+        public static void MaxValInRow(int[,] arr, int i, int j=0, int max = 0)
+        {
+
+           
+
+            if (j < arr.GetLength(1))
+            { 
+                if (max < arr[i, j])
+                {
+                    max = arr[i, j];
+                }
+                MaxValInRow(arr, i, j + 1, max);
+            }
+            else
+            {
+                Console.WriteLine(max);
+            }
+            
+
+        }
+
+        public static void MaxValInAllRows(int[,] arr, int i=0)
+        {
+            if (i < arr.GetLength(0))
+            {
+                MaxValInRow(arr, i,1,  arr[i,0]);
+
+                MaxValInAllRows(arr, i + 1);
+            }
+        }
+
+
+
+
+
+
         public static void UnitTests3()
         {
-            BetweenTwoLetters('a', 'd');
+            //BetweenTwoLetters('a', 'd');
+            //NumDividers(12, 1);
+            //PrintAllEven(12345);
+            //MultiplicationTable(1, 1);
+            //SidraCheshbonit(2, 3, 5);
+            //SidraChesbonit2(5, 1, 1);
+            //SidraChesbonit3(7, 4, 0);
+            //int[] arr1 = { 1, 2, 3, 4, 5, 6 };
+            //EvenInArr(arr1, 0);
+            //int[] arr2 = { 4, 3, 5, 7, 1 };
+            //SmallerThanFollowing(arr2, 0);
+            //int[,] mat = {
+            //    { 1, 2, 3 },
+            //    { 4, 5, 6 },
+            //    { 7, 8, 9 }
+            //};
+            //MatrixTable(mat,0,0);
+            int[,] arr =
+         {
+        { 3, 7, 2, 9 },
+        { 5, 1, 8, 4 },
+        { 6, 10, 2, 3 }
+         };
+
+            MaxValInAllRows(arr, 0);
+
 
         }
     }

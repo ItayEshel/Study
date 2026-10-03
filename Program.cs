@@ -21,7 +21,8 @@ namespace Arrays
             //BusinessAccount.UnitTests();
             //BankServices.UnitTests();
             //Recursions.UnitTests();
-            Recursions.UnitTests2();
+            //Recursions.UnitTests2();
+            Recursions.UnitTests3();
 
 
 
