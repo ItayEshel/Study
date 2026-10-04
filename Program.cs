@@ -19,10 +19,10 @@ namespace Arrays
             //CheckingAccount.UnitTests();
             //SavingAccount.UnitTests();
             //BusinessAccount.UnitTests();
-            //BankServices.UnitTests();
+            BankServices.UnitTests();
             //Recursions.UnitTests();
             //Recursions.UnitTests2();
-            Recursions.UnitTests3();
+            //Recursions.UnitTests3();
 
 
 
