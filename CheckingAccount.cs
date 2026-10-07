@@ -65,7 +65,7 @@ namespace Study
             CheckingAccount ca2 = new CheckingAccount(1, 1, 2, "123");
             ca2.SetBalance(-100);
             Console.WriteLine(ca2.AtRisk());
-
+            asd
         }
     }
 }
